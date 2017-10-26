@@ -2139,7 +2139,7 @@ void rt305x_esw_init(void)
 #elif defined (MT7628_ASIC_BOARD)
 /*TODO: Init MT7628 ASIC PHY HERE*/
 	i = RALINK_REG(RT2880_AGPIOCFG_REG);
-#if defined (ETH_ONE_PORT_ONLY)
+#if defined (CONFIG_ETH_ONE_PORT_ONLY)
         i |= MT7628_EPHY_EN;
         i = i & ~(MT7628_P0_EPHY_AIO_EN);
 #else
@@ -2155,7 +2155,7 @@ void rt305x_esw_init(void)
 	i = i & ~(RSTCTRL_EPHY_RST);
 	RALINK_REG(RT2880_RSTCTRL_REG) = i;
 	i = RALINK_REG(RALINK_SYSCTL_BASE + 0x64);
-#if defined (ETH_ONE_PORT_ONLY)
+#if defined (CONFIG_ETH_ONE_PORT_ONLY)
         i &= 0xf003f003;
         i |= 0x05540554;
         RALINK_REG(RALINK_SYSCTL_BASE + 0x64) = i; // set P0 EPHY LED mode

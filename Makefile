@@ -1668,6 +1668,64 @@ tb0229_config: unconfig
 
 rt2880_config: unconfig
 	@./mkconfig $(@:_config=) mips ralink_soc rt2880
+
+skw93_config: unconfig
+	# generate .config
+	echo "ASIC_BOARD=y" > .config
+	echo "MT7628_ASIC_BOARD=y" >> .config
+	echo "MT7628_MP=y" >> .config
+	echo "P5_MAC_TO_NONE_MODE=y" >> .config
+	echo "P4_MAC_TO_NONE_MODE=y" >> .config
+	echo "ON_BOARD_SPI_FLASH_COMPONENT=y" >> .config
+	echo "ON_BOARD_DDR2=y" >> .config
+	echo "ON_BOARD_1024M_DRAM_COMPONENT=y" >> .config
+	echo "ON_BOARD_DDR_WIDTH_16=y" >> .config
+	echo "ON_BOARD_16BIT_DRAM_BUS=y" >> .config
+	echo "UBOOT_ROM=y" >> .config
+	echo "MT7628_CPU_PLL_PARAMETERS=y" >> .config
+	echo "CPUCLK_FROM_CPLL=y" >> .config
+	echo "CPU_FRAC_DIV=0x1" >> .config
+	echo "ETH_ONE_PORT_ONLY=y" >> .config
+	echo "TEXT_BASE=0xBC000000" >> .config
+	# generate autoconf.h
+	echo "#define AUTOCONF_INCLUDED" > autoconf.h
+	echo "#define ASIC_BOARD 1" >> autoconf.h
+	echo "#undef  RT2880_ASIC_BOARD" >> autoconf.h
+	echo "#undef  RT3350_ASIC_BOARD" >> autoconf.h
+	echo "#undef  RT3052_ASIC_BOARD" >> autoconf.h
+	echo "#undef  RT3352_ASIC_BOARD" >> autoconf.h
+	echo "#undef  RT3883_ASIC_BOARD" >> autoconf.h
+	echo "#undef  RT5350_ASIC_BOARD" >> autoconf.h
+	echo "#undef  RT6855A_ASIC_BOARD" >> autoconf.h
+	echo "#undef  MT7620_ASIC_BOARD" >> autoconf.h
+	echo "#undef  MT7621_ASIC_BOARD" >> autoconf.h
+	echo "#define MT7628_ASIC_BOARD 1" >> autoconf.h
+	echo "#define MT7628_MP 1" >> autoconf.h
+	echo "#define P5_MAC_TO_NONE_MODE 1" >> autoconf.h
+	echo "#define P4_MAC_TO_NONE_MODE 1" >> autoconf.h
+	echo "#define ON_BOARD_SPI_FLASH_COMPONENT 1" >> autoconf.h
+	echo "#undef  ON_BOARD_DDR1" >> autoconf.h
+	echo "#define ON_BOARD_DDR2 1" >> autoconf.h
+	echo "#undef  ON_BOARD_256M_DRAM_COMPONENT" >> autoconf.h
+	echo "#undef  ON_BOARD_512M_DRAM_COMPONENT" >> autoconf.h
+	echo "#define ON_BOARD_1024M_DRAM_COMPONENT 1" >> autoconf.h
+	echo "#undef  ON_BOARD_2048M_DRAM_COMPONENT" >> autoconf.h
+	echo "#undef  ON_BOARD_DDR_WIDTH_8" >> autoconf.h
+	echo "#define ON_BOARD_DDR_WIDTH_16 1" >> autoconf.h
+	echo "#define ON_BOARD_16BIT_DRAM_BUS 1" >> autoconf.h
+	echo "#undef  CONFIG_TINY_UBOOT" >> autoconf.h
+	echo "#undef  UBOOT_RAM" >> autoconf.h
+	echo "#define UBOOT_ROM 1" >> autoconf.h
+	echo "#define MT7628_CPU_PLL_PARAMETERS 1" >> autoconf.h
+	echo "#define CPUCLK_FROM_CPLL 1" >> autoconf.h
+	echo "#undef  CPUCLK_FROM_BPLL" >> autoconf.h
+	echo "#undef  CPUCLK_FROM_XTAL" >> autoconf.h
+	echo "#define CPU_FRAC_DIV 0x1" >> autoconf.h
+	echo "#undef  DUAL_IMAGE_SUPPORT" >> autoconf.h
+	echo "#define ETH_ONE_PORT_ONLY 1" >> autoconf.h
+	echo "#define TEXT_BASE 0xBC000000" >> autoconf.h
+
+
 #########################################################################
 ## MIPS32 AU1X00
 #########################################################################

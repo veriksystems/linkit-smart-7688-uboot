@@ -1992,6 +1992,7 @@ __attribute__((nomips16)) void board_init_r (gd_t *id, ulong dest_addr)
 	    s = getenv ("bootdelay");
 	    timer1 = s ? (int)simple_strtol(s, NULL, 10) : CONFIG_BOOTDELAY;
 	}
+#if 0
 	u32 g;
 
 	// BOOTSTRAP
@@ -2072,6 +2073,7 @@ __attribute__((nomips16)) void board_init_r (gd_t *id, ulong dest_addr)
 	}
 
 	RALINK_REG(RALINK_PIO_BASE+PIO_SET1) |= (1 << 12);
+#endif
 
 	OperationSelect();
 	while (timer1 > 0) {
